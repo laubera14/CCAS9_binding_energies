@@ -14,12 +14,12 @@ my $startstopseq1;
 my $startstopseq2;
 my $energy;
 my $count = 0; #To display count of calculated sequences
-my $seqio_obj = Bio::SeqIO->new(-file => "sequences_extended.fasta", #specify source file here
+my $seqio_obj = Bio::SeqIO->new(-file => "../source/sequences_extended.fasta", #specify source file here
                                 -format => "fasta");
-my $filetowrite_DNA_duplex = 'DNA_duplex.txt'; #specify where free energy values should be written
-my $filetowrite_hybrid_duplex = 'hybrid_duplex.txt'; #specify where free energy values should be written
+my $filetowrite_DNA_duplex = '../output/temp/DNA_duplex.txt'; #specify where free energy values should be written
+my $filetowrite_hybrid_duplex = '../output/temp/hybrid_duplex.txt'; #specify where free energy values should be written
 my $s_5prime_initial = 4; #specify how many bases should be cut away from 5'-End (4nt-gRNA-PAM)
-my $s_3prime_initial = 21; #specify how many bases should be cut away from 3'-End (gRNA-PAM-3nt)
+my $s_3prime_initial = 3; #specify how many bases should be cut away from 3'-End (gRNA-PAM-3nt)
 my $s_5prime = $s_5prime_initial;
 my $s_3prime = $s_3prime_initial;
 #my @factors = (1.491805e-02, 7.767365e-02, 4.822556e-01, 3.660851e-01, 4.057373e-02, 1.660886e-02,
@@ -32,10 +32,10 @@ my $s_3prime = $s_3prime_initial;
 #               1, 1, 1, 1, 1, 1,
 #               1, 1);
 
-for (my $round = 0; $s_3prime >= 3; $round++){
+for (my $round = 0; $s_3prime <= 21; $round++){
 $count = 0;
-$s_5prime = $s_5prime_initial + $round;
-$s_3prime = $s_3prime_initial - $round;
+#$s_5prime = $s_5prime_initial + $round;
+$s_3prime = $s_3prime_initial + $round;
 
 #DNA-DNA-duplex part begins here. free energy for it will be calculated and
 #written to the file specified above
@@ -164,7 +164,7 @@ my $hybrid_file = $filetowrite_hybrid_duplex;
 my $DNA_file = $filetowrite_DNA_duplex;
 my $nt_count_5prime = $s_5prime - 3;
 my $nt_count_3prime = 26 - $s_3prime;
-my $filetowrite_energy_difference = "binding_ediff_$nt_count_5prime-$nt_count_3prime.txt"; #specify where energy differences should be written
+my $filetowrite_energy_difference = "../output/binding_ediff_$nt_count_5prime-$nt_count_3prime.txt"; #specify where energy differences should be written
 my $hybrid_energy;
 my $DNA_energy;
 my $energy_difference;
