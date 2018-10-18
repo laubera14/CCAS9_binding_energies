@@ -32,7 +32,7 @@ my $s_3prime = $s_3prime_initial;
 #               1, 1, 1, 1, 1, 1,
 #               1, 1);
 
-for (my $round = 0; $s_5prime <= 24; $round++){
+for (my $round = 0; $s_5prime <= 25; $round++){
 $count = 0;
 $s_5prime = $s_5prime_initial + $round;
 #$s_3prime = $s_3prime_initial + $round;
