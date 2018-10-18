@@ -32,10 +32,10 @@ my $s_3prime = $s_3prime_initial;
 #               1, 1, 1, 1, 1, 1,
 #               1, 1);
 
-for (my $round = 0; $s_3prime <= 21; $round++){
+for (my $round = 0; $s_5prime <= 24; $round++){
 $count = 0;
-#$s_5prime = $s_5prime_initial + $round;
-$s_3prime = $s_3prime_initial + $round;
+$s_5prime = $s_5prime_initial + $round;
+#$s_3prime = $s_3prime_initial + $round;
 
 #DNA-DNA-duplex part begins here. free energy for it will be calculated and
 #written to the file specified above
@@ -195,7 +195,7 @@ while (defined(my $hybrid_row = <$read_hybrid_file>) and defined(my $DNA_row = <
   if ($DNA_row=~m/^(.+)\s+(\d+\,\d+)\s+(\d+\,\d+)\s+(-?\d+\.\d+)\s+(\d+\.\d+|0)\s+(\d+\.\d+)/){
     $DNA_energy = $4;
     $energy_difference = ($hybrid_energy-$DNA_energy);
-      printf $filestream "%.4f", "$energy_difference";
+      printf $filestream "%.3f", "$energy_difference";
       printf $filestream "\t";
       printf $filestream "%.3f", "$sgRNAScore";
       printf $filestream "\t";
