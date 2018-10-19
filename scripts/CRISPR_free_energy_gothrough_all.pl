@@ -35,7 +35,7 @@ for (my $master_round = 0; $s_3prime < 23; $master_round++){
   $s_3prime = $s_3prime_initial + $master_round;
   $s_5prime = $s_5prime_initial;
 
-for (my $round = 0; $s_5prime < 24; $round++){
+for (my $round = 0; $s_5prime < 24-$master_round; $round++){
 $count = 0;
 $s_5prime = $s_5prime_initial + $round;
 
