@@ -6,6 +6,8 @@ par(mfrow=c(21,20))
 par(mar=c(2,2,2,1), oma = c(0, 0, 2, 0))
 steep_vector <- vector()
 count <- 1
+steep_matrix <- matrix(nrow = 21, ncol = 20, byrow = TRUE)
+
 for (i in 1:21) {
   j <- 1
   if (count > 2) {j <- i-1}
@@ -21,10 +23,8 @@ for (i in 1:21) {
     print(regression)
     steep <- summary(regression)$coefficients[2,1]
     steep_vector <- c(steep_vector, steep)
+    steep_matrix[i,j] = steep
     j <- j + 1
   }
   count <- count + 1
 }
-
-steep_matrix <- matrix(steep_vector, nrow = 21, ncol = 20, byrow = TRUE)
-
