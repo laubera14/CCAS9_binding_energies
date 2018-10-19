@@ -31,13 +31,13 @@ my $s_3prime = $s_3prime_initial;
 #               1, 1, 1, 1, 1, 1,
 #               1, 1, 1, 1, 1, 1,
 #               1, 1);
-for (my $master_round = 0; $s_3prime <= 23; $master_round++){
+for (my $master_round = 0; $s_3prime < 23; $master_round++){
   $s_3prime = $s_3prime_initial + $master_round;
+  $s_5prime = $s_5prime_initial;
 
-for (my $round = 0; $s_5prime <= 24; $round++){
+for (my $round = 0; $s_5prime < 24; $round++){
 $count = 0;
 $s_5prime = $s_5prime_initial + $round;
-#$s_3prime = $s_3prime_initial + $round;
 
 #DNA-DNA-duplex part begins here. free energy for it will be calculated and
 #written to the file specified above
